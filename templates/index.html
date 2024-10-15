@@ -4,68 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TecTalk</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url('/static/index_background.jpg') no-repeat center center fixed;
-            background-size: cover;
-            color: white; 
-        }
-        .header {
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            font-size: 6em;
-            font-weight: bold;
-            font-family: 'Orbitron', sans-serif; 
-        }
-        .navbar {
-            display: flex;
-            justify-content: space-between; 
-            align-items: center;
-            background-color: rgba(26, 26, 26, 0.8); 
-            padding: 10px 20px;
-            position: -webkit-sticky; 
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .navbar-left {
-            display: flex;
-        }
-        .navbar a {
-            color: white;
-            padding: 14px 20px;
-            text-decoration: none;
-            text-align: center;
-        }
-        .navbar a:hover {
-            background-color: #575757;
-        }
-        .login-btn {
-            background-color: #61dafb;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            color: white;
-            font-size: 16px;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .login-btn:hover {
-            background-color: #4fb7d4;
-        }
-        .content {
-            padding: 20px;
-            text-align: center;
-        }
-    </style>
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header">
+    <div class="header"> 
         TecTalk
     </div>
     <div class="navbar">
@@ -75,11 +18,46 @@
             <a href="#">Latest</a>
             <a href="#">Trending</a>
         </div>
-        <a href="/login" class="login-btn">Login</a>
+        {% if current_user.is_authenticated %}
+        <div onclick="toggleDropdown()" class="user-info">
+            <img src="/static/defalt_avatar.jpg" alt="Avatar">
+            <span>{{ current_user.username }}</span>
+            <div id="dropdownMenu" class="dropdown">
+                <a href="{{ url_for('account_settings') }}">Account Settings</a>
+                <a href="{{ url_for('logout') }}" id="logoutLink" onclick="confirmLogout(event)">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+        {% endif %}
     </div>
-    <div class="content">
-        <h1>Welcome to TecTalk</h1>
-        <p>Your place to discuss the latest in technology.</p>
+
+    <!-- Log out Box -->
+    <div id="logoutBox" class="box">
+        <div class="box-content">
+            <p>Confirm log out?</p>
+            <button class="btn btn-confirm" onclick="proceedLogout()">Yes</button>
+            <button class="btn btn-cancel" onclick="cancelLogout()">No</button>
+        </div>
     </div>
+    <div id="chat-container">
+        <div id="chat-header">
+            <span>Chatbox</span>
+        </div>
+        <div id="chat-content">
+            <ul id="messages"></ul>
+        </div>
+        <div id="chat-input">
+            <input id="message" autocomplete="off" placeholder="Say Something..." />
+            <button id="send">Send</button>
+        </div>
+    </div>
+    <!--<div id="content-box">
+        <h2>Your Content Title</h2>
+        <p>Here you can put your content...</p>
+    </div>-->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
 </html>
