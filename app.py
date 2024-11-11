@@ -25,6 +25,7 @@ login_manager.login_view = 'login'
 # Flask-SocketIO
 socket_io = SocketIO(app)
 
+#OOP
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), nullable=False, unique=True)
@@ -51,6 +52,7 @@ class User(db.Model, UserMixin):
 if not os.path.exists(app.config['UPLOAD_FOLDER']):
     os.makedirs(app.config['UPLOAD_FOLDER'])
 
+#Create and output when success
 with app.app_context():
     db.create_all()  
     print("Database tables created")
