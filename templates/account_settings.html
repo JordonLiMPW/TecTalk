@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Settings</title>
+</head>
+<body>
+    <div class="container">
+        <h2>Account Settings</h2>
+        <form action="{{ url_for('account_settings') }}" method="POST" enctype="multipart/form-data">
+            <!-- View / Change Username -->
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" value="{{ current_user.username }}" required>
+            </div>
+            <!-- View / Change Profile Avatar -->
+            <div class="form-group">
+                <label for="avatar">Profile Picture</label>
+                <img id="avatarPreview" src="{{ url_for('static', filename=current_user.avatar) }}" alt="Avatar">
+                <input type="file" id="avatar" name="avatar" onchange="previewAvatar(event)">
+            </div>
+            <!-- View / Change Bio -->
+            <div class="form-group">
+                <label for="bio">Bio</label>
+                <textarea id="bio" name="bio" rows="4">{{ current_user.bio }}</textarea>
+            </div>
+            <!-- Save Changes -->
+            <div class="form-group">
+                <input type="submit" value="Update Account">
+            </div>
+        </form>
+        <a href="{{ url_for('home') }}" class="back-link">Back to Home</a>
+    </div>
+</body>
+</html>
