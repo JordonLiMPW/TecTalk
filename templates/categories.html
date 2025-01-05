@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TecTalk - Categories</title>
+    <!-- Inherit shared styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css')}}">
+    <!-- Sspecific styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='categories.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">TecTalk</header>
+
+    <!-- Navbar -->
+    <nav class="nav-bar">
+        <div class="nav-bar__links">
+            <a href="/" class="nav-bar__link">Home</a>
+            <a href="/categories.html" class="nav-bar__link active">Categories</a>
+            <a href="/latest" class="nav-bar__link">Latest</a>
+            <a href="/trending" class="nav-bar__link">Trending</a>
+        </div>
+        {% if current_user.is_authenticated %}
+        <div class="user-menu" onclick="toggleDropdown()">
+            <img src="{{ url_for('static', filename='defalt_avatar.jpg')}}" alt="User Avatar" class="user-menu__avatar">
+            <span class="user-menu__name">{{ current_user.username }}</span>
+            <div id="dropdownMenu" class="dropdown">
+                <a href="{{ url_for('account_settings') }}" class="dropdown__link">Account Settings</a>
+                <a href="{{ url_for('logout') }}" id="logoutLink" class="dropdown__link" onclick="confirmLogout(event)">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <a href="{{ url_for('login') }}" class="btn btn--login">Login</a>
+        {% endif %}
+    </nav>
+
+    <!-- Categories Grid -->
+    <main class="categories-grids">
+        <div class="category-topic">
+            <h3>Programming</h3>
+            <p>Coding discussions</p>
+        </div>
+        <div class="category-topic">
+            <h3>Hardware</h3>
+            <p>Computer hardware and components</p>
+        </div>
+        <div class="category-topic">
+            <h3>Artificial Intelligence</h3>
+            <p>AI and Machine Learning</p>
+        </div>
+        <div class="category-topic">
+            <h3>Cybersecurity</h3>
+            <p>Security and privacy</p>
+        </div>
+        <div class="category-topic">
+            <h3>Networking</h3>
+            <p>Network protocols</p>
+        </div>
+        <div class="category-topic">
+            <h3>Databases</h3>
+            <p>Database management</p>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='index.js') }}"></script>
+</body>
+</html>
