@@ -7,6 +7,7 @@ from flask_login import LoginManager, UserMixin, login_user, logout_user, login_
 from flask_migrate import Migrate
 from werkzeug.utils import secure_filename
 from flask_socketio import SocketIO, send, emit, join_room, leave_room
+from flask_censor import Censor
 
 app = Flask(__name__)
 app.secret_key = 'your_secret_key'
