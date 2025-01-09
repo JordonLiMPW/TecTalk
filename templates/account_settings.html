@@ -4,80 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Settings</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: url(/static/home.png) no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-        }
-        .container {
-            max-width: 600px;
-            margin: 50px auto;
-            background-color: rgba(0, 0, 0, 0.8);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        .container h2 {
-            text-align: center;
-            margin-bottom: 20px;
-            font-size: 2em;
-            font-family: 'Orbitron', sans-serif;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.2em;
-        }
-        .form-group input[type="text"],
-        .form-group input[type="file"],
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1em;
-            margin-top: 5px;
-        }
-        .form-group textarea {
-            resize: vertical;
-        }
-        .form-group img {
-            display: block;
-            margin: 0 auto 10px;
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-        }
-        .form-group input[type="submit"] {
-            width: 100%;
-            background-color: #61dafb;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-size: 1.2em;
-        }
-        .form-group input[type="submit"]:hover {
-            background-color: #4fb7d4;
-        }
-        .back-link {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #61dafb;
-            text-decoration: none;
-        }
-        .back-link:hover {
-            color: #4fb7d4;
-        }
-    </style>
+    <!-- Specific ac setting styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='account_settings.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
