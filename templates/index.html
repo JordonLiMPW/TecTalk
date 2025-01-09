@@ -47,31 +47,42 @@
         {% endif %}
     </nav>
 
-    <!-- Log out Box -->
-    <div id="logoutBox" class="box">
-        <div class="box-content">
-            <p>Confirm log out?</p>
-            <button class="btn btn-confirm" onclick="proceedLogout()">Yes</button>
-            <button class="btn btn-cancel" onclick="cancelLogout()">No</button>
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chatbox -->
+            <section id="chat-container" class="chat-box">
+                <header id="chat-header" class="chat-box__header">
+                    <span>Chatbox</span>
+                </header>
+                <div id="chat-content" class="chat-box__content">
+                    <ul id="messages" class="chat-box__messages">
+                        <!-- Messages will go here (Waiting for update) -->
+                    </ul>
+                </div>
+                <div id="chat-input" class="chat-box__input">
+                    <input
+                        id="message"
+                        class="chat-box__text-input"
+                        autocomplete="off"
+                        placeholder="Say Something..."
+                    />
+                    <button id="send" class="chat-box__send-btn">Send</button>
+                </div>
+            </section>
+
+            <!-- Announcements Section (side) -->
+            <section class="announcements">
+                <div class="announcements__header">Announcements</div>
+                <div class="announcements__buttons">
+                    <button class="announcements__button">New Thread</button>
+                    <button class="announcements__button">New Topic</button>
+                </div>
+                <div class="announcements__content">
+                    <!-- Waiting for updates -->
+                    <p>No announcements yet. Stay tuned for updates!</p>
+                </div>
+            </section>
         </div>
-    </div>
-    <div id="chat-container">
-        <div id="chat-header">
-            <span>Chatbox</span>
-        </div>
-        <div id="chat-content">
-            <ul id="messages"></ul>
-        </div>
-        <div id="chat-input">
-            <input id="message" autocomplete="off" placeholder="Say Something..." />
-            <button id="send">Send</button>
-        </div>
-    </div>
-    <!--<div id="content-box">
-        <h2>Your Content Title</h2>
-        <p>Here you can put your content...</p>
-    </div>-->
-    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"></script>
     <script src="{{ url_for('static', filename='index.js') }}"></script>
 </body>
