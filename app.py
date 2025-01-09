@@ -146,7 +146,7 @@ def account_settings():
         # New bio
         current_user.bio = bio
 
-        # CHange pfp
+        # Change pfp
         if avatar:
             avatar_filename = secure_filename(avatar.filename)
             avatar_path = os.path.join(app.config['UPLOAD_FOLDER'], avatar_filename)
@@ -159,6 +159,11 @@ def account_settings():
         return redirect(url_for('account_settings'))
 
     return render_template('account_settings.html')
+
+# Categories page
+@app.route('/categories')
+def categories():
+    return render_template('categories.html')
 
 if __name__ == "__main__":
     socket_io.run(app, debug=True)
