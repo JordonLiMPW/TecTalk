@@ -1,0 +1,341 @@
+/* Global Styles */
+:root {
+    --primary-color: #61dafb;
+    --secondary-color: #333;
+    --hover-color: #575757;
+    --background-overlay: rgba(0, 0, 0, 0.7);
+    --font-color-light: white;
+    --font-family-header: 'Orbitron', sans-serif;
+    --font-family-body: Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-family-body);
+    margin: 0;
+    padding: 0;
+    background: url("background.png") no-repeat center center fixed;
+    background-size: cover;
+    color: var(--font-color-light);
+    line-height: 1.6;
+}
+
+/* Header */
+.header {
+    color: var(--font-color-light);
+    text-align: center;
+    padding: 20px;
+    font-size: clamp(2rem, 8vw, 6rem);
+    font-weight: bold;
+    font-family: var(--font-family-header);
+    background-color: rgba(0, 0, 0, 0.5);
+    border-bottom: 2px solid var(--primary-color);
+}
+
+/* Navbar */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(26, 26, 26, 0.8);
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-bar__links {
+    display: flex;
+}
+
+.nav-bar__link {
+    color: var(--font-color-light);
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.nav-bar__link:hover {
+    background-color: var(--hover-color);
+    border-radius: 5px;
+}
+
+/* User Menu */
+.user-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    color: var(--font-color-light);
+    position: relative;
+}
+
+.user-menu__avatar {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown__link {
+    display: block;
+    padding: 10px 15px;
+    color: var(--font-color-light);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown__link:hover {
+    background-color: var(--hover-color);
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    display: none;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-overlay);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal__content {
+    background-color: var(--secondary-color);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 300px;
+}
+
+.modal__message {
+    margin: 20px 0;
+    color: var(--font-color-light);
+    font-size: 1.2rem;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: opacity 0.3s ease;
+}
+
+.btn--confirm {
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+}
+
+.btn--cancel {
+    background-color: #ff4c4c;
+    color: var(--font-color-light);
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+/* Chatbox */
+.chat-box {
+    flex: 2; /* Two-thirds width in the layout */
+    height: 400px; /* Fixed height */
+    background-color: rgba(0, 0, 0, 0.75); /* Opaque grey */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 10px;
+}
+
+/* Chatbox Header */
+.chat-box__header {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: var(--font-color-light);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Chatbox Content */
+.chat-box__content {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto; /* Enable scrolling for long content */
+    color: var(--font-color-light);
+}
+
+/* Chatbox Input */
+.chat-box__input {
+    display: flex;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.chat-box__text-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--font-color-light);
+}
+
+.chat-box__send-btn {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    color: var(--font-color-light);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.chat-box__send-btn:hover {
+    background-color: rgba(97, 218, 251, 0.8);
+}
+
+/* Announcements Section */
+.announcements {
+    flex: 1; /* One-third width in the layout */
+    height: 400px; /* Fixed height to match chatbox */
+    background-color: rgba(0, 0, 0, 0.75); /* Opaque grey */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Announcements Header */
+.announcements__header {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: var(--font-color-light);
+    text-align: center;
+    border-bottom: 2px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Announcements Buttons */
+.announcements__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.announcements__button {
+    background-color: var(--primary-color);
+    color: var(--font-color-light);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.announcements__button:hover {
+    background-color: rgba(97, 218, 251, 0.8);
+}
+
+/* Announcements Content */
+.announcements__content {
+    flex: 1; /* Fill remaining space */
+    overflow-y: auto; /* Scrollable content */
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    color: var(--font-color-light);
+}
+
+/* Main Layout for Chatbox and Announcements */
+.main-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Space between chatbox and announcements */
+    padding: 20px;
+    margin-top: 60px; /* Space below navbar */
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column; /* Stack chatbox and announcements vertically */
+        gap: 20px;
+        padding: 10px;
+    }
+
+    .chat-box,
+    .announcements {
+        width: 100%; /* Full width on smaller screens */
+        height: auto; /* Allow flexible height */
+    }
+}
+
+/* Categories Page */
+/* Categories Grid Layout */
+.categories-grids {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 20px auto;
+    background-color: rgba(0, 0, 0, 0.75); /* Match chatbox styling */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Individual Category Box */
+.category-topic {
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle light background */
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+    color: var(--font-color-light);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.category-topic h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.category-topic p {
+    font-size: 1rem;
+    color: var(--font-color-light);
+}
+
+/* Hover Effect for Categories */
+.category-topic:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
