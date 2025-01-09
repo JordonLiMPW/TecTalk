@@ -8,29 +8,44 @@
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="header"> 
-        TecTalk
-    </div>
-    <div class="navbar">
-        <div class="navbar-left">
-            <a href="#">Home</a>
+    <!-- Header -->
+    <header class="header">TecTalk</header>
+
+    <!-- Navbar -->
+    <nav class="nav-bar">
+        <div class="nav-bar__links">
+            <a href="#" class="nav-bar__link">Home</a>
             <a href="categories" class="nav-bar__link">Categories</a>
-            <a href="#">Latest</a>
-            <a href="#">Trending</a>
+            <a href="#" class="nav-bar__link">Latest</a>
+            <a href="#" class="nav-bar__link">Trending</a>
         </div>
         {% if current_user.is_authenticated %}
-        <div onclick="toggleDropdown()" class="user-info">
-            <img src="/static/defalt_avatar.jpg" alt="Avatar">
-            <span>{{ current_user.username }}</span>
+        <div class="user-menu" onclick="toggleDropdown()">
+            <img
+                src="{{ url_for('static', filename='defalt_avatar.jpg') }}"
+                alt="User Avatar"
+                class="user-menu__avatar"
+            />
+            <span class="user-menu__name">{{ current_user.username }}</span>
             <div id="dropdownMenu" class="dropdown">
-                <a href="{{ url_for('account_settings') }}">Account Settings</a>
-                <a href="{{ url_for('logout') }}" id="logoutLink" onclick="confirmLogout(event)">Logout</a>
+                <a
+                    href="{{ url_for('account_settings') }}"
+                    class="dropdown__link"
+                    >Account Settings</a
+                >
+                <a
+                    href="{{ url_for('logout') }}"
+                    id="logoutLink"
+                    class="dropdown__link"
+                    onclick="confirmLogout(event)"
+                    >Logout</a
+                >
             </div>
         </div>
         {% else %}
-        <a href="{{ url_for('login') }}" class="login-btn">Login</a>
+        <a href="{{ url_for('login') }}" class="btn btn--login">Login</a>
         {% endif %}
-    </div>
+    </nav>
 
     <!-- Log out Box -->
     <div id="logoutBox" class="box">
